@@ -78,7 +78,6 @@ if (grid) {
           ? item.images[0]
           : "https://placehold.co/400x300/A41E35/FFFFFF?text=No+Image";
 
-      // ❌ Deleteボタンは入れない
       card.innerHTML = `
         <img src="${firstImage}" alt="${item.name}">
         <div class="item-info">
@@ -122,4 +121,6 @@ if (grid) {
   }
   if (searchBtn) searchBtn.addEventListener("click", (e) => { e.preventDefault(); triggerSearch(); });
   if (searchInput) searchInput.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); triggerSearch(); } });
+
 }
+
