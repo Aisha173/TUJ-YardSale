@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TujmarketplaceApplication {
 
 	public static void main(String[] args) {
+		//Giit test
 		SpringApplication.run(TujmarketplaceApplication.class, args);
 	}
 
