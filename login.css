@@ -1,0 +1,42 @@
+/* Basic styling for the simulated login form */
+    #login-portal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh; /* Center vertically */
+    }
+    #login-portal input[type="password"], #login-portal button {
+        padding: 10px;
+        margin: 10px 0;
+        width: 300px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+    #login-portal button {
+        background-color: #A41E35; /* TUJ Accent Color */
+        color: white;
+        cursor: pointer;
+        border: none;
+    }
+    #login-portal button:hover {
+        background-color: #8c192d;
+    }
+    .hidden {
+        display: none !important;
+    }
+    /* Ensure the item cards have space to render */
+    #items-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+    }
+    .item-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    width: 300px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    }
