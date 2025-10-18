@@ -10,48 +10,56 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
   </head>
+
   <body>
-    <header>
-      <div class="header-left"></div>
-      <h1 class="logo">TUJ <span class="accent">Yard Sale</span></h1>
-      <div class="header-right">
-        <nav>
-          <a href="index.html">Browse</a> | <a href="sell.html">Sell</a> |
-        </nav>
+    <header class="simple-header">
+      <div class="header-left">
+        <h1 class="logo left">
+          <a href="index.html">TUJ <span class="accent">Yard Sale</span></a>
+        </h1>
+        
       </div>
+
+      <div class="header-center">
+        <div class="search-bar">
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Search for items..."
+          />
+          <button id="searchBtn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
+
+      <nav class="header-right">
+        <a href="sell.html">Sell</a>
+      </nav>
     </header>
-    <section class="hero">
-      <h2>Buy & Sell with your TUJ community</h2>
-      <div class="search">
-        <input
-          id="searchInput"
-          type="search"
-          placeholder="Search for books, furniture, electronics..."
-        />
-        <button id="searchBtn">Search</button>
-      </div>
-    </section>
-    <section class="browse">
-      <h2>BROWSE</h2>
-      <div class="categories">
-        <div class="category">
-          <i class="fa-solid fa-shirt fa-6x" style="color: #a41e35"></i>
-          <p>Clothing</p>
-        </div>
-        <div class="category">
-          <i class="fa-solid fa-computer fa-6x" style="color: #a41e35"></i>
-          <p>Electronics</p>
-        </div>
-        <div class="category">
-          <i class="fa-solid fa-couch fa-6x" style="color: #a41e35"></i>
-          <p>Furniture</p>
-        </div>
-        <div class="category">
-          <i class="fa-solid fa-book fa-6x" style="color: #a41e35"></i>
-          <p>Books</p>
-        </div>
-      </div>
-    </section>
+
+    <div class="main-layout">
+      <aside class="category-panel">
+        <h3>Categories</h3>
+        <ul id="categoryList">
+          <li data-category="All"><i class="fa-solid fa-layer-group"></i> All</li>
+          <li data-category="Clothes"><i class="fa-solid fa-shirt"></i> Clothes</li>
+          <li data-category="Electronics"><i class="fa-solid fa-laptop"></i> Electronics</li>
+          <li data-category="Furniture"><i class="fa-solid fa-couch"></i> Furniture</li>
+          <li data-category="Books"><i class="fa-solid fa-book"></i> Books</li>
+          <li data-category="Appliances"><i class="fa-solid fa-blender-phone"></i>Appliances</li>
+          <li data-category="Pet"><i class="fa-solid fa-dog"></i>Pet Supplies</li>
+          <li data-category="Media"><i class="fa-solid fa-photo-film"></i>Media</li>
+        </ul>
+      </aside>
+      
+      <section class="content-area">
+        <section class="browse">
+          <div class="item-grid"></div>
+        </section>
+      </section>
+    </div>
+
     <script src="app.js"></script>
   </body>
 </html>

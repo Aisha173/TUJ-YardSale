@@ -1,73 +1,75 @@
-// ====== SELL PAGE ======
-const form = document.querySelector("form");
-if (form) {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById("itemName").value;
-    const price = document.getElementById("price").value;
-    const description = document.getElementById("description").value;
-    const email = document.getElementById("email").value;
-    const files = document.getElementById("image").files;
-
-    const readerPromises = [];
-    const images = [];
-
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      const reader = new FileReader();
-      const promise = new Promise((resolve) => {
-        reader.onload = () => {
-          images.push(reader.result);
-          resolve();
-        };
-      });
-      reader.readAsDataURL(file);
-      readerPromises.push(promise);
-    }
-
-    Promise.all(readerPromises).then(() => {
-      const newItem = { name, price, description, email, images };
-
-      const existingItems = JSON.parse(localStorage.getItem("items")) || [];
-      existingItems.push(newItem);
-      localStorage.setItem("items", JSON.stringify(existingItems));
-
-      alert("Item posted successfully!");
-      window.location.href = "index.html";
-    });
-  });
-}
-
-// ====== INDEX PAGE ======
-const itemList = document.querySelector(".hero");
-if (itemList) {
+const browseSection = document.querySelector(".browse");
+if (browseSection) {
   const items = JSON.parse(localStorage.getItem("items")) || [];
 
-  if (items.length === 0) {
-    const emptyMsg = document.createElement("p");
-    emptyMsg.textContent = "No items yet — be the first to post!";
-    emptyMsg.style.color = "#A41E35";
-    itemList.appendChild(emptyMsg);
-  } else {
-    items.forEach((item) => {
+  const grid = document.createElement("div");
+  grid.className = "item-grid";
+  browseSection.appendChild(grid);
+
+
+  function renderItems(filterCategory = "All") {
+    grid.innerHTML = ""; 
+    const filteredItems =
+      filterCategory === "All"
+        ? items
+        : items.filter((item) => item.category === filterCategory);
+
+    if (filteredItems.length === 0) {
+      grid.innerHTML = `<p style="color:#A41E35;">No items in this category.</p>`;
+      return;
+    }
+
+    filteredItems.forEach((item, index) => {
       const div = document.createElement("div");
       div.className = "item-card";
 
-      const imgTag =
+      const firstImage =
         item.images && item.images[0]
           ? `<img src="${item.images[0]}" alt="${item.name}" class="item-image">`
           : "";
 
       div.innerHTML = `
-        ${imgTag}
+        ${firstImage}
         <h3>${item.name}</h3>
-        <p><strong>Price:</strong> $${item.price}</p>
+        <p><strong>$${item.price}</strong></p>
+        <p class="category-tag">${item.category}</p>
         <p>${item.description}</p>
-        <a href="mailto:${item.email}" class="contact-link">Contact Seller</a>
+        <a href="mailto:${item.email}" class="contact-link">Contact</a>
+        <button class="delete-btn" data-index="${index}">Delete</button>
       `;
 
-      itemList.appendChild(div);
+      grid.appendChild(div);
     });
   }
+
+  renderItems();
+
+  const categoryList = document.getElementById("categoryList");
+  if (categoryList) {
+    categoryList.addEventListener("click", (e) => {
+      if (e.target.tagName === "LI" || e.target.closest("LI")) {
+        const li = e.target.closest("LI");
+        const category = li.dataset.category;
+        renderItems(category);
+
+        document.querySelectorAll("#categoryList li").forEach((el) => {
+          el.classList.remove("active-category");
+        });
+        li.classList.add("active-category");
+      }
+    });
+  }
+
+  document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("delete-btn")) {
+      const index = e.target.getAttribute("data-index");
+      const confirmDelete = confirm("Do you delete this item?");
+      if (confirmDelete) {
+        const items = JSON.parse(localStorage.getItem("items")) || [];
+        items.splice(index, 1);
+        localStorage.setItem("items", JSON.stringify(items));
+        location.reload();
+      }
+    }
+  });
 }
