@@ -1,110 +1,59 @@
-
 body {
-    font-family: 'Inter', 'Helvetica', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #fafafa;
-    color: #333;
-  }
-  
-  header {
-    background-color: #A41E35;
-    color: white;
-    text-align: center;
-    padding: 1.5rem 1rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  }
-  
-  header h1 {
-    margin: 0;
-    font-size: 2rem;
-    letter-spacing: 1px;
-  }
-  
-  nav {
-    margin-top: 0.8rem;
-  }
-  
-  nav a {
-    color: white;
-    margin: 0 12px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: opacity 0.2s ease-in-out;
-  }
-  
-  nav a:hover {
-    opacity: 0.8;
-  }
-  
-  main {
-    max-width: 600px;
-    margin: 2.5rem auto;
-    background-color: #fff;
-    padding: 2rem 2.5rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  h2 {
-    color: #A41E35;
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  form label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: #333;
-  }
-  
-  input[type="text"],
-  input[type="number"],
-  input[type="email"],
-  textarea,
-  input[type="file"] {
-    width: 100%;
-    padding: 12px 14px;
-    font-size: 1rem;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    box-sizing: border-box;
-    transition: border-color 0.2s ease-in-out;
-  }
-  
-  input:focus,
-  textarea:focus {
-    outline: none;
-    border-color: #A41E35;
-  }
-  
-  button {
-    width: 100%;
-    padding: 14px;
-    background-color: #A41E35;
-    color: white;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out, transform 0.1s;
-  }
-  
-  button:hover {
-    background-color: #8e1b2e;
-  }
-  
-  button:active {
-    transform: scale(0.98);
-  }
-  
-  @media (max-width: 600px) {
-    main {
-      margin: 1rem;
-      padding: 1.5rem;
-    }
-  }
-  
+  font-family: "Arial", sans-serif;
+  background-color: #fff5f5;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #a41e35; /* TUJ red */
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.hero {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #a41e35;
+  color: white;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.hero .search input {
+  padding: 10px;
+  width: 60%;
+  max-width: 400px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+
+.hero .search button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #b71c1c;
+  color: white;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.hero .search button:hover {
+  background-color: #880e4f;
+}
