@@ -10,56 +10,119 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
   </head>
-
   <body>
-    <header class="simple-header">
+    <header>
       <div class="header-left">
-        <h1 class="logo left">
-          <a href="index.html">TUJ <span class="accent">Yard Sale</span></a>
-        </h1>
-        
+        <h1 class="logo">TUJ <span class="accent">Yard Sale</span></h1>
       </div>
-
       <div class="header-center">
-        <div class="search-bar">
-          <input
-            id="searchInput"
-            type="search"
-            placeholder="Search for items..."
-          />
-          <button id="searchBtn">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
+        <div class="search-container">
+          <input type="search" placeholder="Search for items..." />
+          <button><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
       </div>
-
-      <nav class="header-right">
+      <div class="header-right">
         <a href="sell.html">Sell</a>
-      </nav>
+        <a href="login" class="post-item-btn">Login / Sign Up</a>
+      </div>
     </header>
 
-    <div class="main-layout">
-      <aside class="category-panel">
-        <h3>Categories</h3>
-        <ul id="categoryList">
-          <li data-category="All"><i class="fa-solid fa-layer-group"></i> All</li>
-          <li data-category="Clothes"><i class="fa-solid fa-shirt"></i> Clothes</li>
-          <li data-category="Electronics"><i class="fa-solid fa-laptop"></i> Electronics</li>
-          <li data-category="Furniture"><i class="fa-solid fa-couch"></i> Furniture</li>
-          <li data-category="Books"><i class="fa-solid fa-book"></i> Books</li>
-          <li data-category="Appliances"><i class="fa-solid fa-blender-phone"></i>Appliances</li>
-          <li data-category="Pet"><i class="fa-solid fa-dog"></i>Pet Supplies</li>
-          <li data-category="Media"><i class="fa-solid fa-photo-film"></i>Media</li>
+    <main class="main-container">
+      <aside class="sidebar">
+        <h2>Categories</h2>
+        <ul>
+          <li>
+            <a href="#" class="active"
+              ><info class="fa-solid fa-layer-group"></info> All Items</a
+            >
+          </li>
+          <li>
+            <a href="#"><info class="fa-solid fa-book"></info> Books</a>
+          </li>
+          <li>
+            <a href="#"><info class="fa-solid fa-shirt"></info> Clothing</a>
+          </li>
+          <li>
+            <a href="#"
+              ><info class="fa-solid fa-computer"></info> Electronics</a
+            >
+          </li>
+          <li>
+            <a href="#"><info class="fa-solid fa-couch"></info> Furniture</a>
+          </li>
+          <li>
+            <a href="#"><info class="fa-solid fa-ellipsis"></info> Other</a>
+          </li>
         </ul>
       </aside>
-      
-      <section class="content-area">
-        <section class="browse">
-          <div class="item-grid"></div>
-        </section>
-      </section>
-    </div>
 
-    <script src="app.js"></script>
+      <section class="content">
+        <h2>Featured Items</h2>
+        <div class="item-grid">
+          <div class="item-card">
+            <img
+              src="https://placehold.co/400x300/A41E35/FFFFFF?text=Textbook"
+              alt="Item Image"
+            />
+            <div class="item-info">
+              <h3 class="item-title">Intro to Psychology Textbook</h3>
+              <p class="item-price">¥2,500</p>
+              <p class="item-description">
+                Barely used textbook for the Fall semester. No highlighting or
+                marks.
+              </p>
+              <button class="contact-details-btn">contact</button>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <img
+              src="https://placehold.co/400x300/a4351e/FFFFFF?text=Desk+Chair"
+              alt="Item Image"
+            />
+            <div class="item-info">
+              <h3 class="item-title">Ergonomic Desk Chair</h3>
+              <p class="item-price">¥8,000</p>
+              <p class="item-description">
+                Great for long study sessions. Adjustable height and armrests.
+                Good condition.
+              </p>
+              <button class="contact-details-btn">contact</button>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <img
+              src="https://placehold.co/400x300/5f1ea4/FFFFFF?text=Laptop"
+              alt="Item Image"
+            />
+            <div class="item-info">
+              <h3 class="item-title">MacBook Air (2020)</h3>
+              <p class="item-price">¥95,000</p>
+              <p class="item-description">
+                M1 chip, 8GB RAM. Works perfectly, selling because I upgraded.
+              </p>
+              <button class="contact-details-btn">contact</button>
+            </div>
+          </div>
+
+          <div class="item-card">
+            <img
+              src="https://placehold.co/400x300/1ea499/FFFFFF?text=Mini+Fridge"
+              alt="Item Image"
+            />
+            <div class="item-info">
+              <h3 class="item-title">Compact Mini Fridge</h3>
+              <p class="item-price">¥5,000</p>
+              <p class="item-description">
+                Perfect for a dorm room or small apartment. Clean and fully
+                functional.
+              </p>
+              <button class="contact-details-btn">Contact</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
