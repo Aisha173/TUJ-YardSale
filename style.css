@@ -1,203 +1,124 @@
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #fff5f5;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Inter', 'Helvetica', sans-serif;
-    background-color: #fafafa;
-    color: #333;
-    line-height: 1.6;
-    min-height: 100vh;
-  }
-  
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #a41e35; /* TUJ red */
+  color: white;
+  padding: 20px 40px;
+  position: relative;
+}
 
-  header {
-    background-color: #A41E35;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 3rem 10rem;
-    position: relative;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-  }
-  
+.logo {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%); /* truly center the title */
+  font-size: 2rem;
+}
 
-  header::before {
-    content: "";
-    width: 120px;
-    height: 1px;
-  }
-  
+header .header-right img.tuj-logo {
+  height: 100px; /* adjust as needed */
+  position: absolute;
+  right: 80%;
+  color: rgba(255, 255, 255, 0.5); /* white at 50% opacity */
+}
 
-  header .logo {
-    font-size: 3rem;
-    font-weight: 700;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 20px;
+  font-weight: bold;
+}
 
-  nav {
-    margin: 0;
-  }
-  
-  nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: 600;
-    font-size: 1.2rem;
-    transition: opacity 0.2s ease;
-  }
-  
-  nav a:hover {
-    opacity: 0.8;
-  }
-  
-  
-  
+nav a:hover {
+  text-decoration: underline;
+}
 
-  .hero {
-    text-align: center;
-    padding: 4rem 1rem;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    margin: 2rem auto;
-    max-width: 800px;
-  }
-  
-  .hero h2 {
-    font-size: 1.6rem;
-    margin-bottom: 1.5rem;
-    color: #A41E35;
-  }
-  
-  .search {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
-  
-  .search input {
-    width: 70%;
-    padding: 12px 14px;
-    font-size: 1rem;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    transition: border-color 0.2s;
-  }
-  
-  .search input:focus {
-    outline: none;
-    border-color: #A41E35;
-  }
-  
-  .search button {
-    padding: 12px 20px;
-    background-color: #A41E35;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.2s, transform 0.1s;
-  }
-  
-  .search button:hover {
-    background-color: #8e1b2e;
-  }
-  
-  .search button:active {
-    transform: scale(0.97);
-  }
-  
-  /* ===== Main (Sell Page) ===== */
-  main {
-    max-width: 650px;
-    margin: 3rem auto;
-    padding: 2rem;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  }
-  
-  main h2 {
-    text-align: center;
-    color: #A41E35;
-    margin-bottom: 2rem;
-    font-size: 1.8rem;
-  }
-  
-  /* ===== Form ===== */
-  form label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-  
-  form input[type="text"],
-  form input[type="number"],
-  form input[type="email"],
-  form textarea,
-  form input[type="file"] {
-    width: 100%;
-    padding: 12px 14px;
-    margin-bottom: 1.2rem;
-    font-size: 1rem;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    transition: border-color 0.2s ease;
-  }
-  
-  form input:focus,
-  form textarea:focus {
-    outline: none;
-    border-color: #A41E35;
-  }
-  
-  /* ===== Submit Button ===== */
-  button[type="submit"] {
-    width: 100%;
-    padding: 14px;
-    background-color: #A41E35;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #8e1b2e;
-  }
-  
-  button[type="submit"]:active {
-    transform: scale(0.98);
-  }
-  
-  /* ===== Responsive ===== */
-  @media (max-width: 600px) {
-    .hero, main {
-      margin: 1rem;
-      padding: 1.5rem;
-    }
-  
-    .search input {
-      width: 65%;
-    }
-  
-    nav a {
-      margin: 0 8px;
-    }
-  }
-  
+.hero {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #a41e35;
+  color: white;
+}
+
+.hero h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.hero .search input {
+  padding: 10px;
+  width: 60%;
+  max-width: 400px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+
+.hero .search button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #b71c1c;
+  color: white;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.hero .search button:hover {
+  background-color: #880e4f;
+}
+
+/* Browse Section */
+.browse {
+  padding: 30px 20px;
+  text-align: center;
+  background-color: #fff0f0; /* light red/pink background for the section */
+}
+
+.browse h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: #d32f2f; /* TUJ red */
+}
+
+/* Categories container */
+.categories {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* space between categories */
+  flex-wrap: wrap; /* wrap on smaller screens */
+}
+
+/* Individual category box */
+.category {
+  width: 120px; /* fixed width for uniformity */
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.category img {
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid #d32f2f; /* optional red border for style */
+}
+
+.category p {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #d32f2f; /* red text for category name */
+}
+
+/* Hover effect */
+.category:hover {
+  transform: scale(1.05); /* slight zoom */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* subtle shadow */
+}

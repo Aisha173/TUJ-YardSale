@@ -5,13 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TUJ Yard Sale</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
   <body>
     <header>
+      <div class="header-left"></div>
       <h1 class="logo">TUJ <span class="accent">Yard Sale</span></h1>
-      <nav>
-        <a href="index.html">Browse</a>  <a href="sell.html">Sell</a> 
-      </nav>
+      <div class="header-right">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQp0cb5UkdyBYo__-OHYmRUMuMdf-3kX4HZA&s"
+          alt="TUJ Logo"
+          class="tuj-logo"
+        />
+        <nav>
+          <a href="Browse.html">Browse</a> | <a href="Sell.html">Sell</a> |
+        </nav>
+      </div>
     </header>
     <section class="hero">
       <h2>Buy & Sell with your TUJ community</h2>
@@ -22,6 +34,27 @@
           placeholder="Search for books, furniture, electronics..."
         />
         <button id="searchBtn">Search</button>
+      </div>
+    </section>
+    <section class="browse">
+      <h2>BROWSE</h2>
+      <div class="categories">
+        <div class="category">
+          <i class="fa-solid fa-shirt fa-6x" style="color: #a41e35"></i>
+          <p>Clothing</p>
+        </div>
+        <div class="category">
+          <i class="fa-solid fa-computer fa-6x" style="color: #a41e35"></i>
+          <p>Electronics</p>
+        </div>
+        <div class="category">
+          <i class="fa-solid fa-couch fa-6x" style="color: #a41e35"></i>
+          <p>Furniture</p>
+        </div>
+        <div class="category">
+          <i class="fa-solid fa-book fa-6x" style="color: #a41e35"></i>
+          <p>Books</p>
+        </div>
       </div>
     </section>
   </body>
