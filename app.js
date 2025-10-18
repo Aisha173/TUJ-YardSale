@@ -1,75 +1,125 @@
-const browseSection = document.querySelector(".browse");
-if (browseSection) {
-  const items = JSON.parse(localStorage.getItem("items")) || [];
+const sellForm = document.getElementById("sellForm");
+if (sellForm) {
+  sellForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  const grid = document.createElement("div");
-  grid.className = "item-grid";
-  browseSection.appendChild(grid);
+    const name = document.getElementById("itemName").value.trim();
+    const price = document.getElementById("price").value.trim();
+    const category = document.getElementById("category").value;
+    const description = document.getElementById("description").value.trim();
 
+    const pickup = document.getElementById("pickup").value.trim();
 
-  function renderItems(filterCategory = "All") {
-    grid.innerHTML = ""; 
-    const filteredItems =
-      filterCategory === "All"
-        ? items
-        : items.filter((item) => item.category === filterCategory);
+    const email = document.getElementById("email").value.trim();
+    const files = document.getElementById("image").files;
 
-    if (filteredItems.length === 0) {
-      grid.innerHTML = `<p style="color:#A41E35;">No items in this category.</p>`;
+    if (!name || !price || !category || !description || !pickup || !email) {
+      alert("Please fill out all fields before posting.");
       return;
     }
 
-    filteredItems.forEach((item, index) => {
-      const div = document.createElement("div");
-      div.className = "item-card";
+    const images = [];
+    const readerPromises = [];
+    for (let i = 0; i < files.length; i++) {
+      const reader = new FileReader();
+      const promise = new Promise((resolve) => {
+        reader.onload = () => {
+          images.push(reader.result);
+          resolve();
+        };
+      });
+      reader.readAsDataURL(files[i]);
+      readerPromises.push(promise);
+    }
+
+    Promise.all(readerPromises).then(() => {
+      const newItem = { name, price, category, description, pickup, email, images };
+
+      const existingItems = JSON.parse(localStorage.getItem("items")) || [];
+      existingItems.push(newItem);
+      localStorage.setItem("items", JSON.stringify(existingItems));
+
+      alert("Item posted successfully!");
+      window.location.href = "index.html";
+    });
+  });
+}
+
+
+
+const grid = document.getElementById("itemGrid"); 
+if (grid) {
+  let items = JSON.parse(localStorage.getItem("items")) || [];
+
+  function renderItems({ category = "All", query = "" } = {}) {
+    grid.innerHTML = "";
+    const q = query.trim().toLowerCase();
+
+    const filtered = items.filter((it) => {
+      const okCat = category === "All" ? true : it.category === category;
+      const okQuery =
+        !q ||
+        it.name.toLowerCase().includes(q) ||
+        it.description.toLowerCase().includes(q);
+      return okCat && okQuery;
+    });
+
+    if (filtered.length === 0) {
+      grid.innerHTML = `<p style="color:#A41E35;">No items found.</p>`;
+      return;
+    }
+
+    filtered.forEach((item) => {
+      const card = document.createElement("div");
+      card.className = "item-card";
 
       const firstImage =
         item.images && item.images[0]
-          ? `<img src="${item.images[0]}" alt="${item.name}" class="item-image">`
-          : "";
+          ? item.images[0]
+          : "https://placehold.co/400x300/A41E35/FFFFFF?text=No+Image";
 
-      div.innerHTML = `
-        ${firstImage}
-        <h3>${item.name}</h3>
-        <p><strong>$${item.price}</strong></p>
-        <p class="category-tag">${item.category}</p>
-        <p>${item.description}</p>
-        <a href="mailto:${item.email}" class="contact-link">Contact</a>
-        <button class="delete-btn" data-index="${index}">Delete</button>
+      // ❌ Deleteボタンは入れない
+      card.innerHTML = `
+        <img src="${firstImage}" alt="${item.name}">
+        <div class="item-info">
+          <h3 class="item-title">${item.name}</h3>
+          <p class="item-price">$${item.price}</p>
+          <p class="item-description">${item.description}</p>
+          <a href="mailto:${item.email}" class="contact-details-btn">Contact</a>
+        </div>
       `;
-
-      grid.appendChild(div);
+      grid.appendChild(card);
     });
   }
+
 
   renderItems();
 
+  
   const categoryList = document.getElementById("categoryList");
+  let currentCategory = "All";
+  let currentQuery = "";
+
   if (categoryList) {
     categoryList.addEventListener("click", (e) => {
-      if (e.target.tagName === "LI" || e.target.closest("LI")) {
-        const li = e.target.closest("LI");
-        const category = li.dataset.category;
-        renderItems(category);
+      const link = e.target.closest("a[data-category]");
+      if (!link) return;
+      e.preventDefault();
+      currentCategory = link.dataset.category;
 
-        document.querySelectorAll("#categoryList li").forEach((el) => {
-          el.classList.remove("active-category");
-        });
-        li.classList.add("active-category");
-      }
+      categoryList.querySelectorAll("a").forEach((a) => a.classList.remove("active"));
+      link.classList.add("active");
+
+      renderItems({ category: currentCategory, query: currentQuery });
     });
   }
 
-  document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("delete-btn")) {
-      const index = e.target.getAttribute("data-index");
-      const confirmDelete = confirm("Do you delete this item?");
-      if (confirmDelete) {
-        const items = JSON.parse(localStorage.getItem("items")) || [];
-        items.splice(index, 1);
-        localStorage.setItem("items", JSON.stringify(items));
-        location.reload();
-      }
-    }
-  });
+  const searchInput = document.getElementById("searchInput");
+  const searchBtn = document.getElementById("searchBtn");
+  function triggerSearch() {
+    currentQuery = (searchInput?.value ?? "");
+    renderItems({ category: currentCategory, query: currentQuery });
+  }
+  if (searchBtn) searchBtn.addEventListener("click", (e) => { e.preventDefault(); triggerSearch(); });
+  if (searchInput) searchInput.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); triggerSearch(); } });
 }
