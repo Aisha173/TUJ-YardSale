@@ -18,23 +18,30 @@
   <main>
     <h2>Sell an Item</h2>
     <form>
-      <label for="itemName">Item Name:</label><br>
+      <label for="itemName">Item Name:</label>
       <input type="text" id="itemName" name="itemName" required><br><br>
 
-      <label for="price">Price:</label><br>
+      <label for="price">Price:</label>
       <input type="number" id="price" name="price" required><br><br>
 
-      <label for="description">Description:</label><br>
+      <label for="description">Description:</label>
       <textarea id="description" name="description" rows="4" cols="40" required></textarea><br><br>
 
-      <label for="image">Upload an Image:</label><br>
-      <input type="file" id="image" accept="image/*" multiple><br><br>
-
-      <label for="email">Your Temple Emal:</label><br>
+      <label for="email">Your Temple Emal:</label>
       <input type="email" id="email" name="email" placeholder="example@temple.edu" pattern=".+temple\.edu" required><br><br>
+
+      <label for="image" class="custom-upload">
+        <span class="plus">＋</span> Upload Image
+      </label>
+      <input type="file" id="image" accept="image/*" multiple required><br><br>
+      
+
+      
 
       <button type="submit">Post Item</button>
     </form>
   </main>
+  <script src="app.js"></script>
+
 </body>
 </html>
