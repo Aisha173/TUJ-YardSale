@@ -33,7 +33,15 @@ if (sellForm) {
     }
 
     Promise.all(readerPromises).then(() => {
-      const newItem = { name, price, category, description, pickup, email, images };
+      const newItem = {
+        name,
+        price,
+        category,
+        description,
+        pickup,
+        email,
+        images,
+      };
 
       const existingItems = JSON.parse(localStorage.getItem("items")) || [];
       existingItems.push(newItem);
@@ -45,11 +53,40 @@ if (sellForm) {
   });
 }
 
-
-
-const grid = document.getElementById("itemGrid"); 
+const grid = document.getElementById("itemGrid");
 if (grid) {
-  let items = JSON.parse(localStorage.getItem("items")) || [];
+  let items = JSON.parse(localStorage.getItem("items"));
+
+  if (!items || items.length === 0) {
+    items = [
+      {
+        name: "Used Laptop",
+        price: "150000",
+        category: "Electronics",
+        description: "A reliable laptop great for school and browsing.",
+        images: ["demo-images/laptop.jpg"],
+        email: "seller1@example.com",
+      },
+      {
+        name: "Office Chair",
+        price: "12000",
+        category: "Furniture",
+        description: "Comfortable office chair.",
+        images: ["demo-images/chair.jpg"],
+        email: "seller2@example.com",
+      },
+      {
+        name: "Genki Textbook",
+        price: "3000",
+        category: "Books",
+        description: "Used but still in good condition.",
+        images: ["demo-images/book.jpg"],
+        email: "seller3@example.com",
+      },
+    ];
+
+    localStorage.setItem("items", JSON.stringify(items));
+  }
 
   function renderItems({ category = "All", query = "" } = {}) {
     grid.innerHTML = "";
@@ -60,7 +97,8 @@ if (grid) {
       const okQuery =
         !q ||
         it.name.toLowerCase().includes(q) ||
-        it.description.toLowerCase().includes(q);
+        it.description.toLowerCase().includes(q) ||
+        it.price.toLowerCase().includes(q);
       return okCat && okQuery;
     });
 
@@ -82,7 +120,7 @@ if (grid) {
         <img src="${firstImage}" alt="${item.name}">
         <div class="item-info">
           <h3 class="item-title">${item.name}</h3>
-          <p class="item-price">$${item.price}</p>
+          <p class="item-price">¥${item.price}</p>
           <p class="item-description">${item.description}</p>
           <a href="mailto:${item.email}" class="contact-details-btn">Contact</a>
         </div>
@@ -91,10 +129,8 @@ if (grid) {
     });
   }
 
-
   renderItems();
 
-  
   const categoryList = document.getElementById("categoryList");
   let currentCategory = "All";
   let currentQuery = "";
@@ -106,7 +142,9 @@ if (grid) {
       e.preventDefault();
       currentCategory = link.dataset.category;
 
-      categoryList.querySelectorAll("a").forEach((a) => a.classList.remove("active"));
+      categoryList
+        .querySelectorAll("a")
+        .forEach((a) => a.classList.remove("active"));
       link.classList.add("active");
 
       renderItems({ category: currentCategory, query: currentQuery });
@@ -116,11 +154,19 @@ if (grid) {
   const searchInput = document.getElementById("searchInput");
   const searchBtn = document.getElementById("searchBtn");
   function triggerSearch() {
-    currentQuery = (searchInput?.value ?? "");
+    currentQuery = searchInput?.value ?? "";
     renderItems({ category: currentCategory, query: currentQuery });
   }
-  if (searchBtn) searchBtn.addEventListener("click", (e) => { e.preventDefault(); triggerSearch(); });
-  if (searchInput) searchInput.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); triggerSearch(); } });
-
+  if (searchBtn)
+    searchBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      triggerSearch();
+    });
+  if (searchInput)
+    searchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        triggerSearch();
+      }
+    });
 }
-

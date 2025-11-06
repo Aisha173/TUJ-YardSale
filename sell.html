@@ -1,91 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>TUJ Yard Sale - Sell an Item</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>TUJ Yard Sale - Sell an Item</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
     <header class="simple-header">
-        <div class="header-left">
-            <h1 class="logo left">
-                <a href="index.html">TUJ <span class="accent">Yard Sale</span></a>
-              </h1>
-              
+      <div class="header-left">
+        <h1 class="logo left">
+          <a href="index.html">TUJ <span class="accent">Yard Sale</span></a>
+        </h1>
+      </div>
+
+      <div class="header-center">
+        <div class="search-bar">
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Search for items..."
+          />
+          <button id="searchBtn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
         </div>
-      
-        <div class="header-center">
-          <div class="search-bar">
-            <input
-              id="searchInput"
-              type="search"
-              placeholder="Search for items..."
-            />
-            <button id="searchBtn">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-          </div>
-        </div>
-      
-        <nav class="header-right">
-          <a href="sell.html">Sell</a>
-        </nav>
-      </header>
-      
+      </div>
 
+      <nav class="header-right">
+        <a href="sell.html">Sell</a>
+      </nav>
+    </header>
 
-  <main>
-    <h2>Sell an Item</h2>
-    <form id="sellForm">
-      <label for="itemName">Item Name:</label>
-      <input type="text" id="itemName" name="itemName" required><br><br>
+    <main>
+      <h2>Sell an Item</h2>
+      <form id="sellForm">
+        <label for="itemName">Item Name:</label>
+        <input type="text" id="itemName" name="itemName" required /><br /><br />
 
-      <label for="price">Price:</label>
-      <input type="number" id="price" name="price" required><br><br>
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" required /><br /><br />
 
-      <label for="description">Description:</label>
-      <textarea id="description" name="description" rows="4" cols="40" required></textarea><br><br>
+        <label for="description">Description:</label>
+        <textarea
+          id="description"
+          name="description"
+          rows="4"
+          cols="40"
+          required
+        ></textarea
+        ><br /><br />
 
-      <label for="pickup">Pick-up Place:</label>
-      <input
-        type="text"
-        id="pickup"
-        placeholder="TUJ building entrance, Setagaya Gate, Library lobby, etc."
-        required
-      />
-      
+        <label for="pickup">Pick-up Place:</label>
+        <input
+          type="text"
+          id="pickup"
+          placeholder="TUJ building entrance, Setagaya Gate, Library lobby, etc."
+          required
+        />
 
-      <label for="category">Category:</label>
-      <select id="category" required>
-        <option value="">-- Select a category --</option>
-        <option value="Clothes">Clothes</option>
-        <option value="Electronics">Electronics</option>
-        <option value="Furniture">Furniture</option>
-        <option value="Books">Books</option>
-        <option value="Appliances">Appliances</option>
-        <option value="Pet">Pet Supplies</option>
-        <option value="Media">Media</option>
-      </select><br><br>
+        <label for="category">Category:</label>
+        <select id="category" required>
+          <option value="">-- Select a category --</option>
+          <option value="Clothes">Clothes</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Furniture">Furniture</option>
+          <option value="Books">Books</option>
+          <option value="Appliances">Appliances</option>
+          <option value="Pet">Pet Supplies</option>
+          <option value="Media">Media</option></select
+        ><br /><br />
 
-      <label for="image" class="custom-upload">
-        <span class="plus">＋</span> Upload Image
-      </label>
-      <input type="file" id="image" accept="image/*" multiple required><br><br>
+        <label for="image" class="custom-upload">
+          <span class="plus">＋</span> Upload Image
+        </label>
+        <input
+          type="file"
+          id="image"
+          accept="image/*"
+          multiple
+          required
+        /><br /><br />
 
-      <label for="email">Your Temple Email:</label>
-      <input type="email" id="email" name="email" placeholder="example@temple.edu" pattern=".+temple\.edu" required><br><br>
+        <label for="email">Your Temple Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="example@temple.edu"
+          pattern=".+temple\.edu"
+          required
+        /><br /><br />
 
-      <button type="submit">Post Item</button>
-
-
-    </form>
-  </main>
-  <script src="app.js"></script>
-
-</body>
+        <button type="submit">Post Item</button>
+      </form>
+    </main>
+    <script src="app.js"></script>
+  </body>
 </html>

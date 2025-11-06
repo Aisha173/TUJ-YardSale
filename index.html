@@ -17,111 +17,56 @@
       </div>
       <div class="header-center">
         <div class="search-container">
-          <input type="search" placeholder="Search for items..." />
-          <button><i class="fa-solid fa-magnifying-glass"></i></button>
+          <input type="text" id="searchInput" placeholder="Search for items..." />
+          <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
       </div>
       <div class="header-right">
         <a href="sell.html">Sell</a>
-        <a href="login" class="post-item-btn">Login / Sign Up</a>
+        <a href="login.html" class="post-item-btn">Login / Sign Up</a>
       </div>
     </header>
 
     <main class="main-container">
       <aside class="sidebar">
         <h2>Categories</h2>
-        <ul>
+        <ul id="categoryList">
           <li>
-            <a href="#" class="active"
+            <a href="#" class="active" data-category="All"
               ><info class="fa-solid fa-layer-group"></info> All Items</a
             >
           </li>
           <li>
-            <a href="#"><info class="fa-solid fa-book"></info> Books</a>
+            <a href="#" data-category="Books"
+              ><info class="fa-solid fa-book"></info> Books</a
+            >
           </li>
           <li>
-            <a href="#"><info class="fa-solid fa-shirt"></info> Clothing</a>
+            <a href="#" data-category="Clothes"
+              ><info class="fa-solid fa-shirt"></info> Clothing</a
+            >
           </li>
           <li>
-            <a href="#"
+            <a href="#" data-category="Electronics"
               ><info class="fa-solid fa-computer"></info> Electronics</a
             >
           </li>
           <li>
-            <a href="#"><info class="fa-solid fa-couch"></info> Furniture</a>
+            <a href="#" data-category="Furniture"
+              ><info class="fa-solid fa-couch"></info> Furniture</a
+            >
           </li>
           <li>
-            <a href="#"><info class="fa-solid fa-ellipsis"></info> Other</a>
+            <a href="#" data-category="Other"
+              ><info class="fa-solid fa-ellipsis"></info> Other</a
+            >
           </li>
         </ul>
       </aside>
 
       <section class="content">
         <h2>Featured Items</h2>
-        <div class="item-grid">
-          <div class="item-card">
-            <img
-              src="https://placehold.co/400x300/A41E35/FFFFFF?text=Textbook"
-              alt="Item Image"
-            />
-            <div class="item-info">
-              <h3 class="item-title">Intro to Psychology Textbook</h3>
-              <p class="item-price">¥2,500</p>
-              <p class="item-description">
-                Barely used textbook for the Fall semester. No highlighting or
-                marks.
-              </p>
-              <button class="contact-details-btn">contact</button>
-            </div>
-          </div>
-
-          <div class="item-card">
-            <img
-              src="https://placehold.co/400x300/a4351e/FFFFFF?text=Desk+Chair"
-              alt="Item Image"
-            />
-            <div class="item-info">
-              <h3 class="item-title">Ergonomic Desk Chair</h3>
-              <p class="item-price">¥8,000</p>
-              <p class="item-description">
-                Great for long study sessions. Adjustable height and armrests.
-                Good condition.
-              </p>
-              <button class="contact-details-btn">contact</button>
-            </div>
-          </div>
-
-          <div class="item-card">
-            <img
-              src="https://placehold.co/400x300/5f1ea4/FFFFFF?text=Laptop"
-              alt="Item Image"
-            />
-            <div class="item-info">
-              <h3 class="item-title">MacBook Air (2020)</h3>
-              <p class="item-price">¥95,000</p>
-              <p class="item-description">
-                M1 chip, 8GB RAM. Works perfectly, selling because I upgraded.
-              </p>
-              <button class="contact-details-btn">contact</button>
-            </div>
-          </div>
-
-          <div class="item-card">
-            <img
-              src="https://placehold.co/400x300/1ea499/FFFFFF?text=Mini+Fridge"
-              alt="Item Image"
-            />
-            <div class="item-info">
-              <h3 class="item-title">Compact Mini Fridge</h3>
-              <p class="item-price">¥5,000</p>
-              <p class="item-description">
-                Perfect for a dorm room or small apartment. Clean and fully
-                functional.
-              </p>
-              <button class="contact-details-btn">Contact</button>
-            </div>
-          </div>
-        </div>
+        <div id="itemGrid" class="item-grid"></div>
       </section>
     </main>
 

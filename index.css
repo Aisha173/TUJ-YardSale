@@ -205,6 +205,8 @@ header {
 }
 
 .contact-details-btn {
+  display: block;
+  text-align: center;
   background-color: #a41e35;
   color: white;
   border: none;
@@ -215,6 +217,8 @@ header {
   font-weight: 600;
   transition: background-color 0.2s;
   margin-top: auto;
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
 .contact-details-btn:hover {
